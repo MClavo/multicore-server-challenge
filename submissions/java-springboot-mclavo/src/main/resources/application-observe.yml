@@ -1,0 +1,36 @@
+# Local development/performance diagnostics only; never enable for benchmark runs.
+server:
+  tomcat:
+    mbeanregistry:
+      enabled: true
+
+management:
+  server:
+    address: 127.0.0.1
+    port: 3111
+  endpoints:
+    web:
+      exposure:
+        include: [health, prometheus]
+      discovery:
+        enabled: false
+  endpoint:
+    health:
+      access: read-only
+      show-details: never
+    prometheus:
+      access: read-only
+  prometheus:
+    metrics:
+      export:
+        enabled: true
+  metrics:
+    enable:
+      all: true
+    distribution:
+      percentiles-histogram:
+        http.server.requests: true
+        hikaricp.connections.acquire: true
+  observations:
+    enable:
+      all: true

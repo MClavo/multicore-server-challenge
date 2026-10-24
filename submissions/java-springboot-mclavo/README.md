@@ -39,6 +39,12 @@ directly uses standard Spring datasource properties rather than converting `DATA
 
 ## Implementation
 
+For opt-in local Prometheus/Grafana diagnostics, see
+[observability/README.md](observability/README.md). It documents the `observe` profile,
+loopback-only management listener on port 3111, monitoring startup/shutdown commands,
+and the provisioned **Spring Boot Performance** dashboard at <http://localhost:3001>.
+Leave the profile unset and stop the monitoring stack for normal benchmarks.
+
 Features live under `dev.mclavo.conduit`: users, profiles, articles, comments and tags each
 have controllers, transactional services, Spring Data repositories and explicit DTOs.
 Security, configuration and shared error/validation helpers have separate packages.
@@ -73,6 +79,8 @@ native SQL, reactive stack or custom connection/thread tuning is used.
 
 ## Validation status
 
-No tests were created, modified or executed during implementation. No builds, benchmarks,
-application starts or endpoint checks were executed. The pre-existing scaffold test was left
-untouched. Compilation, conformance, debugging and measurements remain for the submission owner.
+The observability changes passed Java compilation (`./gradlew --offline --no-daemon compileJava`),
+Docker Compose configuration validation, YAML/JSON syntax checks, and `git diff --check`.
+No tests or benchmarks were created or run, and no application or monitoring services were
+started. The pre-existing scaffold test was left untouched. Live scraping, dashboard rendering,
+conformance and measurements remain unverified.

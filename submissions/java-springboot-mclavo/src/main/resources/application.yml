@@ -36,3 +36,24 @@ server:
 
 challenge:
   jwt-secret: ${JWT_SECRET:multicore-server-challenge}
+
+# Local diagnostics are opt-in through application-observe.yml.
+management:
+  server:
+    port: -1
+  endpoints:
+    access:
+      default: none
+    jmx:
+      exposure:
+        exclude: "*"
+  defaults:
+    metrics:
+      export:
+        enabled: false
+  metrics:
+    enable:
+      all: false
+  observations:
+    enable:
+      all: false
