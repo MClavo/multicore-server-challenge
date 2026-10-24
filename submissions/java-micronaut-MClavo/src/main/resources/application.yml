@@ -1,0 +1,14 @@
+micronaut:
+  application:
+    name: conduit
+  server:
+    host: ${HOST:127.0.0.1}
+    port: ${PORT:3000}
+
+datasources:
+  default:
+    url: ${JDBC_URL:`jdbc:postgresql://127.0.0.1:5432/conduit_dev`}
+    username: ${DB_USERNAME:conduit}
+    password: ${DB_PASSWORD:conduit}
+    driver-class-name: org.postgresql.Driver
+    maximum-pool-size: 16 # <- this has to change
