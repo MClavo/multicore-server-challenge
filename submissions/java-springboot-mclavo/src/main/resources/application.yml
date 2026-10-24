@@ -1,0 +1,38 @@
+spring:
+  application:
+    name: conduit
+
+  datasource:
+    url: jdbc:postgresql://127.0.0.1:5432/conduit_dev
+    username: conduit
+    password: conduit
+
+  jackson:
+    deserialization:
+      fail-on-unknown-properties: false
+      fail-on-trailing-tokens: true
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: UTC
+        cache:
+          use_second_level_cache: false
+          use_query_cache: false
+
+  sql:
+    init:
+      mode: never
+
+server:
+  address: ${HOST:127.0.0.1}
+  port: ${PORT:3000}
+  tomcat:
+    keep-alive-timeout: 70s
+
+challenge:
+  jwt-secret: ${JWT_SECRET:multicore-server-challenge}
